@@ -34,17 +34,8 @@ jobs:
         
         - name: Checkout code
           uses: actions/checkout@v4
-          
-        - name: Set up Docker
-          uses: docker-practice/actions-setup-docker@v1
-
-          with: 
-              docker_version: '28.3.2'
-        - name: Build Docker Image
+        - name: Build Docker image
           run: docker build -f Dockerfile -t myapp:latest .
-          
-        - name: Show Docker daemon config
-          run: sudo cat /etc/docker/daemon.json || true
 
         - name: Docker scout scan
           run: | 
