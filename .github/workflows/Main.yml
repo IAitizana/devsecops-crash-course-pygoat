@@ -1,3 +1,4 @@
+
 name: CI
 
 on: [push]
@@ -55,12 +56,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/myapp:latest
 
       - name: Docker Scout
         uses: docker/scout-action@v1
         with:
           command: cves,quickview
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
+          image: ${{ secrets.DOCKER_USERNAME }}/myapp:latest
           only-severities: critical,high
-
